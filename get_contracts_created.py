@@ -12,16 +12,11 @@ from common.wrappers.bitquery_wrapper import BitqueryWrapper
 
 sys.path.append('/Users/amitairuskin/Desktop/redefine/redefine-backend/scripts/research/pool_compliance_v2')
 load_dotenv()
-
-
 chain_id = 1
 web3 = Web3Bundle(ChainIDS(chain_id))
 bit_query = BitqueryWrapper()
-
-
 path = '/Users/amitairuskin/Desktop/redefine/redefine-backend/scripts/research/pool_compliance_v2/'
 df = pd.read_csv(path + 'project_creator_info.csv')
-
 def get_contracts(creator):
     creator_lower = creator.lower()
     try:
@@ -35,9 +30,6 @@ def get_contracts(creator):
     except Exception as e:
         print(e)
         return None
-
 df['other_contracts'] = df.loc[:,'token_creator'].apply(lambda x: get_contracts(x))
-
 print(df)
-
 df.to_csv(path + 'ariel_project_data.csv')

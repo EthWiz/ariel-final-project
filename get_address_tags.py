@@ -12,7 +12,6 @@ labelIndex = len('https://etherscan.io/accounts/label/')
 for elem in elems:
     href = elem.get_attribute("href")
     if (href.startswith('https://etherscan.io/accounts/label/')):
-        labels.append(href[labelIndex:])
-
+        labels.append(href)
 print(labels)
 print('L:', len(labels))
